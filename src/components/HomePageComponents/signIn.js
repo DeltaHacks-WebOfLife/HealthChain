@@ -9,7 +9,8 @@ import{
     FormLabel, 
     FormInput,
     FormButton,
-    Text
+    Text,
+    SubText,
 } from './signInElements'
 import { StaticImage } from "gatsby-plugin-image"
 
@@ -27,6 +28,7 @@ const HomePage = () => {
                     style={{position: 'relative', right: '5rem', bottom: '4.5rem'}}
                     />
                 </Icon>
+                <SubText>Improving the security of healthcare one chain at a time</SubText>
                 <FormContent>
                     <Form action ='/submit'>
                         <FormH1>Sign in to your account</FormH1>
@@ -34,11 +36,26 @@ const HomePage = () => {
                         <FormInput type='email' required />
                         <FormLabel htmlFor='for'>Password</FormLabel>
                         <FormInput type='password' required />
-                        <FormButton type='submit'>Sign in</FormButton>
+                        <FormButton type='submit'>Sign In</FormButton>
                         <Text>Forgot Password</Text>
                     </Form>
                 </FormContent>
+
+                
+
             </FormWrap>
+
+            <StaticImage
+                    src="../../images/doctors.png"
+                    alt="doctors"
+                    placeholder="transparent"
+                    width={600}
+                    height={600}
+                    quality = {100}
+                    style ={{position: 'relative', bottom: '35rem', left: '10rem'}}
+                />
+
+
         </Container>
     </>)}
 

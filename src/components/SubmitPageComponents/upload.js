@@ -78,6 +78,7 @@ class App extends Component {
      
       return (
         <div>
+          <TextContainer>
           <Icon to ='/' >HealthChain <StaticImage
                     src="../../images/healthChainLogo.png"
                     alt="healthChainLogo"
@@ -88,11 +89,11 @@ class App extends Component {
                     />
             </Icon>
 
-            
-            <h3>
-              Welcome back Doctor. 
-              <br/> Please Upload File
-            </h3>
+
+            <SubTitle>
+              Welcome back Doctor. Please Upload a File
+            </SubTitle>
+            </TextContainer>
 
             <Container>
             <div>
@@ -114,11 +115,22 @@ class App extends Component {
 
 
   const Container = styled.div`
-    font-family: "Lato", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    flex-direction: column;
+    background: #D3494E; 
+    max-width: 400px;
+    height: auto; 
+    width: 100%;
+    z-index: 1;
+    display: grid; 
+    margin: 0 auto; 
+    padding: 80px 32px; 
+    border-radius: 20px; 
+    top: 8rem;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.9); 
+
+    @media screen and (max-width: 400px) {
+        padding: 32px 32px; 
+    }
   `
 
   const Icon = styled(Link)`
@@ -129,9 +141,32 @@ class App extends Component {
     top: 2rem;
     font-weight: 700; 
     font-size: 32px;
+    height: 50px;
 
     @media screen and (max-width: 480px) {
         margin-left: 16px; 
         margin-top: 8px; 
     }
+`
+
+const SubTitle = styled.i`
+  text-decoration: none; 
+  color: black; 
+  position: relative;
+  top: 2rem;
+  font-weight: 400; 
+  font-size: 16px;
+  margin-left: 32px;
+
+
+  @media screen and (max-width: 480px) {
+      margin-left: 16px; 
+      margin-top: 8px; 
+  }
+`
+
+const TextContainer = styled.div`
+    position: relative;
+    display: flex;
+    flex-direction: column;
 `

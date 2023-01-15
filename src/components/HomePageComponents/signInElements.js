@@ -18,7 +18,6 @@ export const FormWrap = styled.div`
     height: 100%;
     display: flex; 
     flex-direction: column; 
-    justify-content: center; 
     
     @media screen and (max-wdith: 400px){
         height: 80%
@@ -31,6 +30,7 @@ export const Icon = styled(Link)`
     color: #D3494E; 
     font-weight: 700; 
     font-size: 32px;
+    height: 60px;
 
     @media screen and (max-width: 480px) {
         margin-left: 16px; 
@@ -42,9 +42,9 @@ export const FormContent = styled.div`
     height: 100%; 
     display: flex; 
     position: relative;
-    bottom: 5rem;
     flex-direction: column; 
-    justify-content: center;
+    left: 20rem;
+    top: 4rem;
 
     @media screen and (max-width: 480px){
         padding: 10px;
@@ -60,8 +60,9 @@ export const Form = styled.form`
     display: grid; 
     margin: 0 auto; 
     padding: 80px 32px; 
-    border-radius: 4px; 
-    box-shadown: 0 1px 3px rgba(0,0,0,0.9); 
+    border-radius: 20px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.9); 
+
 
     @media screen and (max-width: 400px) {
         padding: 32px 32px; 
@@ -91,12 +92,13 @@ export const FormInput = styled.input`
 
 export const FormButton = styled.button`
     background: white; 
-    padding: 16p 0; 
+    padding: 16px 0; 
     border: none; 
     border-radius: 4px; 
     color: black; 
     font-size: 15px; 
     cursor: pointer; 
+    
 `
 
 export const Text = styled.span`
@@ -105,3 +107,18 @@ export const Text = styled.span`
     color: #fff; 
     font-size: 14px; 
 `
+
+export const SubText = styled.i`
+    margin-left: 32px;
+    text-decoration: none; 
+    color: black; 
+    font-weight: 400; 
+    font-size: 20px;
+    width: 100%;
+    height: 20px;
+
+    @media screen and (max-width: 480px) {
+        margin-left: 16px; 
+        margin-top: 8px; 
+    }
+    `
