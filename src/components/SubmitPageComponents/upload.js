@@ -20,6 +20,7 @@ class App extends Component {
      
       // Update the state
       this.setState({ selectedFile: event.target.files[0] });
+      console.log(event.target.files[0]);
      
     };
      
@@ -30,20 +31,32 @@ class App extends Component {
       const formData = new FormData();
      
       // Update the formData object
-      formData.append(
-        "myFile",
-        this.state.selectedFile,
-        this.state.selectedFile.name
-      );
-     
-      // Details of the uploaded file
-      console.log(this.state.selectedFile);
+      formData.append("file", this.state.selectedFile)
      
       // Request made to the backend api
       // Send formData object
-      axios.post("api/uploadfile", formData);
+      
+      axios
+        .post('http://localhost:3001/upload', formData, {})
+        .then(res => console.log(res.statusText))
+        .catch(err => {
+          console.error(err);
+      });
     };
-     
+
+    run = () => {
+      console.log("in run function");
+      fetch("http://localhost:3001/post", {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+        }}).then((res) => {
+        res.json()
+        console.log(res);
+    })
+    }
+
+  
     // File content to be displayed after
     // file upload is complete
     fileData = () => {
@@ -98,9 +111,14 @@ class App extends Component {
             <Container>
             <div>
                 <input type="file" onChange={this.onFileChange} />
-                <button onClick={this.onFileUpload}>
+                <a href = "javascript:setTimeout(()=>{window.location = 'http://localhost:3001/post' },5000);" > 
+                <button onClick={() => {
+                  this.onFileUpload();
+                  this.run();
+                }}>
                   Upload!
                 </button>
+                </a>
             </div>
           {this.fileData()}
           </Container>
