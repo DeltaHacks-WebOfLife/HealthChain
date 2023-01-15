@@ -4,13 +4,12 @@ import * as React from "react"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import HomePage from '../components/HomePageComponents/signIn'
 //import * as styles from "../components/index.module.css"
+import App from "../components/SubmitPageComponents/upload"
 
-
-const IndexPage = () => (
+const Submit = () => (
   <Layout>
-    <HomePage/>
+    <App/>
   </Layout>
 )
 
@@ -19,6 +18,6 @@ const IndexPage = () => (
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo title="Home" />
+export const Head = () => <Seo title="Upload" />
 
-export default IndexPage
+export default Submit
