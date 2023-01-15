@@ -4,8 +4,11 @@ const port = 3001
 const cors = require('cors')
 const multer = require('multer')
 
+
+// Moralis
 const fs = require("fs")
 const Moralis = require("moralis").default;
+
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -35,13 +38,11 @@ app.post('/upload', upload.single('file'), async function (req, res) {
     counter++;
 
     // Generate IPFS link
-    links.unshift(await upload_moralis(req.file.path));
-
-    console.log(`A file has been uploaded at ${links[0]}`);
+    links.unshift(await upload_verbwire(req.file.path));
 })
 
 app.get("/post", function(req, res) {
-    console.log(links[0]);
+    console.log("A file has been uploaded at " + links[0]);
     res.json({ 
         CLICK_HERE_TO_VIEW_THE_LINK: links[0]
     });
@@ -61,3 +62,21 @@ const upload_moralis = async (file) => {
     
     return response?.result[0].path;
 }
+
+const upload_verbwire = async (file) => {
+    let ipfs_url;
+
+    const sdk = require('api')('@verbwire/v1.0#1cmb42lcujqu5q');
+    sdk.auth('sk_live_e11bb28a-bae6-457e-a074-ec5fadf2e9ad');
+
+    sdk.postNftStoreFile({filePath: file}, {accept: 'application/json'})
+        .then(({ data }) => {
+            console.log(data.ipfs_storage.ipfs_url)
+            ipfs_url = data.ipfs_storage.ipfs_url;
+            return ipfs_url;
+        })
+        .catch(err => console.error(err));
+
+    return "AN ERROR HAS OCCURED"
+}
+
